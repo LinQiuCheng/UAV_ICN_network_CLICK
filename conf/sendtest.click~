@@ -1,0 +1,5 @@
+out1::Queue(200);
+
+SendGet(INTERVAL 1,LIMIT 1)->out1;   
+out1->EtherEncap(0X1110,38:f9:d3:2d:b4:64,FF:FF:FF:FF:FF:FF)
+->ToDevice(en0);
