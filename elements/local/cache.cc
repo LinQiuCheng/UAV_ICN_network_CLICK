@@ -10,7 +10,7 @@ CLICK_DECLS
 
 Cache::Cache(){
     printf("init Cache suc\n\n");
-    this->capacity = CACHE_SIZE;
+    //this->capacity = CACHE_SIZE;
     this->count = 0;
     head = new LRUCacheNode;
     tail = new LRUCacheNode;
@@ -30,6 +30,7 @@ int
 Cache::configure(Vector<String> &conf, ErrorHandler *errh)
 {
     return Args(conf, this, errh).read_mp("NID", nid).
+    read_mp("CACHE_SIZE",capacity).
     read_p("SRC", EtherAddressArg(), self_mac.ether_shost).
     complete();
 }
