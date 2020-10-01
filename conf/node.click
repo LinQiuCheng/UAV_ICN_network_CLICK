@@ -8,15 +8,15 @@
 
 require(library local.click);
 
-define($DEV en0, $MAC 38:f9:d3:2d:b4:64, $BMAC ff:ff:ff:ff:ff:ff,$NID 1, 
-        $ETHERTYPE 0X1110,$IP 10.0.1.1)
+define($DEV en0, $MAC 38:f9:d3:2d:b4:64, $BMAC ff:ff:ff:ff:ff:ff,$CACHE_SZ 50,
+	$NID 1, $ETHERTYPE 0X1110,$IP 10.0.1.1)
 
 
 nodegetprocess::NodeGetProcess($NID);
 nodedataprocess::NodeDataProcess($NID);
 nodecontrolprocess::NodeControlProcess($NID);
 c::Classifier(12/1110 14/a0,12/1110 14/a1,12/1110 14/a3,-);
-cache::Cache(NID $NID,SRC $MAC);
+cache::Cache(NID $NID,CACHE_SIZE $CACHE_SZ,SRC $MAC);
 pit::PitTable(NID $NID,SRC $MAC);
 out1 :: Queue(200);
 datareceive::DataReceive;
